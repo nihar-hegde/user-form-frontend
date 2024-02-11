@@ -46,7 +46,6 @@ export const InputUserForm = () => {
     try {
       await submitUserForm(data);
       router.push("/all-users");
-      revalidatePath("/all-users");
     } catch (error) {
       console.log(error);
     }
