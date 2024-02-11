@@ -28,6 +28,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { submitUserForm } from "@/lib/actions/user-form.actions";
 import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const InputUserForm = () => {
   const router = useRouter();
@@ -45,6 +46,7 @@ export const InputUserForm = () => {
     try {
       await submitUserForm(data);
       router.push("/all-users");
+      revalidatePath("/all-users");
     } catch (error) {
       console.log(error);
     }
