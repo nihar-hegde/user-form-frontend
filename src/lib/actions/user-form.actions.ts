@@ -21,7 +21,7 @@ export const submitUserForm = async (data: UserFormSchemaT) => {
             email: validatedData.data.email,
             phoneNumber: validatedData.data.phoneNumber,
           }),
-        }
+        },
       );
       const data = await response.json();
       revalidatePath("/all-users");
@@ -35,7 +35,8 @@ export const submitUserForm = async (data: UserFormSchemaT) => {
 export const getAllUserForms = async () => {
   try {
     const response = await fetch(
-      "https://user-form-backend-op6u.onrender.com/api/v1/user/all-user-form"
+      "https://user-form-backend-op6u.onrender.com/api/v1/user/all-user-form",
+      { cache: "no-store" },
     );
     const data = await response.json();
     return data;
